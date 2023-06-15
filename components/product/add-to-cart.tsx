@@ -9,10 +9,12 @@ import { ProductVariant } from 'lib/types';
 
 export function AddToCart({
   variants,
-  availableForSale
+  availableForSale,
+  buttonText = "Add To Cart"
 }: {
   variants: ProductVariant[];
   availableForSale: boolean;
+  buttonText?: string;
 }) {
   const [selectedVariantId, setSelectedVariantId] = useState(variants[0]?.id);
   const router = useRouter();
@@ -73,7 +75,7 @@ export function AddToCart({
         }
       )}
     >
-      <span>{availableForSale ? 'Add To Cart' : 'Out Of Stock'}</span>
+      <span>{availableForSale ? buttonText : 'Out Of Stock'}</span>
       {isMutating ? <LoadingDots className="bg-white dark:bg-black" /> : null}
     </button>
   );

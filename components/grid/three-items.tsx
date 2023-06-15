@@ -3,6 +3,8 @@ import { getCollectionProducts } from 'lib/saleor';
 import type { Product } from 'lib/types';
 import Link from 'next/link';
 
+import { AddToCart } from 'components/product/add-to-cart';
+
 function ThreeItemGridItem({
   item,
   size,
@@ -14,7 +16,7 @@ function ThreeItemGridItem({
 }) {
   return (
     <div
-      className={size === 'full' ? 'lg:col-span-4 lg:row-span-2' : 'lg:col-span-2 lg:row-span-1'}
+      className={size === 'full' ? 'relative lg:col-span-4 lg:row-span-2' : 'relative lg:col-span-2 lg:row-span-1'}
     >
       <Link className="block h-full" href={`/product/${item.handle}`}>
         <GridTileImage
@@ -31,6 +33,9 @@ function ThreeItemGridItem({
           }}
         />
       </Link>
+      <div className={'absolute top-0 right-0 p-2 bg-white m-2'}>
+        <AddToCart buttonText="Quick Buy" variants={item.variants} availableForSale={item.availableForSale} />
+      </div>
     </div>
   );
 }
