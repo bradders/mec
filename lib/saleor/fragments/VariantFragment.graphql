@@ -1,6 +1,7 @@
 fragment Variant on ProductVariant {
   id
   name
+  quantityAvailable(address: { country: CA })
   attributes {
     attribute {
       slug

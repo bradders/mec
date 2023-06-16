@@ -255,17 +255,17 @@ function flattenMenuItems(menuItems: null | undefined | MenuItemWithChildren[]):
         (item.collection
           ? `/search/${item.collection.slug}`
           : item.category
-          ? `/search/${item.category.slug}`
-          : '');
+            ? `/search/${item.category.slug}`
+            : '');
 
       return [
         ...(path
           ? [
-              {
-                path: path,
-                title: item.name
-              }
-            ]
+            {
+              path: path,
+              title: item.name
+            }
+          ]
           : []),
         ...flattenMenuItems(item.children)
       ];
