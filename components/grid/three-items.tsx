@@ -4,6 +4,7 @@ import type { Product } from 'lib/types';
 import Link from 'next/link';
 
 import { AddToCart } from 'components/product/add-to-cart';
+import { Ratings } from 'components/product/ratings';
 
 function ThreeItemGridItem({
   item,
@@ -33,7 +34,9 @@ function ThreeItemGridItem({
           }}
         />
       </Link>
+
       <div className={'absolute top-0 right-0 p-2 bg-white m-2'}>
+        <Ratings handle={item.handle} />
         <AddToCart buttonText="Quick Buy" variants={item.variants} availableForSale={item.availableForSale} />
       </div>
     </div>

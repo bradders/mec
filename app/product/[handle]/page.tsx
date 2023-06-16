@@ -7,6 +7,7 @@ import Footer from 'components/layout/footer';
 import ProductGridItems from 'components/layout/product-grid-items';
 import { AddToCart } from 'components/product/add-to-cart';
 import { Gallery } from 'components/product/gallery';
+import { Ratings } from 'components/product/ratings';
 import { VariantSelector } from 'components/product/variant-selector';
 import Prose from 'components/prose';
 import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
@@ -40,15 +41,15 @@ export async function generateMetadata({
     },
     openGraph: url
       ? {
-          images: [
-            {
-              url,
-              width,
-              height,
-              alt
-            }
-          ]
-        }
+        images: [
+          {
+            url,
+            width,
+            height,
+            alt
+          }
+        ]
+      }
       : null
   };
 }
@@ -76,6 +77,8 @@ export default async function ProductPage({ params }: { params: { handle: string
         <div className="p-6 lg:col-span-2">
           {/* @ts-expect-error Server Component */}
           <VariantSelector options={product.options} variants={product.variants} />
+
+          <Ratings handle={product.handle} />
 
           {product.descriptionHtml ? (
             <Prose className="mb-6 text-sm leading-tight" html={product.descriptionHtml} />
